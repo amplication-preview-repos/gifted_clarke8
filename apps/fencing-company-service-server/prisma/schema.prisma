@@ -1,0 +1,26 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model FenceImage {
+  createdAt   DateTime @default(now())
+  description String?
+  id          String   @id @default(cuid())
+  imageUrl    String?
+  title       String?
+  updatedAt   DateTime @updatedAt
+}
+
+model Inquiry {
+  createdAt DateTime @default(now())
+  email     String?
+  id        String   @id @default(cuid())
+  message   String?
+  name      String?
+  updatedAt DateTime @updatedAt
+}
